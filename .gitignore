@@ -1,0 +1,96 @@
+# Flutter/Dart 기본
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.idea/
+.vscode/
+build/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+pubspec.lock
+
+# Android
+android/.gradle/
+android/captures/
+android/app/build/
+
+# iOS
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/build/
+
+# Web
+web/.dart_tool/
+web/build/
+
+# 기타
+*.iml
+*.log
+*.tmp
+*.swp
+*.DS_Store
+*.lock
+*.bak
+*.orig
+*.class
+*.pyc
+*.pyo
+*.so
+*.exe
+*.dll
+*.obj
+*.o
+*.a
+*.lib
+*.dylib
+*.ncb
+*.sdf
+*.suo
+*.pdb
+*.idb
+*.ipch
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*.user
+*.sln.docstates
+
+# Flutter
+.flutter/
+.dart_tool/
+.idea/
+.packages
+
+# Build artifacts
+build/
+.gradle/
+.android/
+.ios/
+.symlinks/
+.pub-cache/
+
+# Platform-specific files
+android/
+ios/
+linux/
+macos/
+web/
+windows/
+
+# Android Studio and VS Code
+.vscode/
+.DS_Store
+
+# Generated files
+*.g.dart
+*.freezed.dart
+pubspec.lock
