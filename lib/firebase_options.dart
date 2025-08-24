@@ -51,11 +51,11 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCuQ-pnLeqq29EW_w9jKeBOu3gJTmUu-u4',
-    appId: '1:1027153162918:android:555aa9b2fca76b8ac4ba67',
-    messagingSenderId: '1027153162918',
-    projectId: 'opencj-6067a',
-    storageBucket: 'opencj-6067a.firebasestorage.app',
+    apiKey: 'AIzaSyBYYLh_rxgVjKcaN4qafjY0bFpQFRg-MNU',
+    appId: '1:551075266651:android:2597b05a4195d78f407f7e',
+    messagingSenderId: '551075266651',
+    projectId: 'dongneapp',
+    storageBucket: 'dongneapp.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(

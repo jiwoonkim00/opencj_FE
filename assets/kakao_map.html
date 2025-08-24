@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <!-- 카카오 지도 JS SDK: autoload=false 로드 후 직접 초기화 -->
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=c0f384994d8be9bc5de3b26697c92832&autoload=false"></script>
+    <style>
+        html, body { margin:0; padding:0; height:100%; }
+        #map { width:100%; height:100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    // Flutter에서 메시지로 초기 좌표/마커 받기 위해 postMessage 사용
+    let map;
+
+    function initMap(opts) {
+      const center = new kakao.maps.LatLng(opts.lat || 37.5665, opts.lng || 126.9780);
+      map = new kakao.maps.Map(document.getElementById('map'), {
+        center,
+        level: opts.level || 4,
+      });
+
+      (opts.markers || []).forEach((m) => {
+        const marker = new kakao.maps.Marker({
+          position: new kakao.maps.LatLng(m.lat, m.lng),
+          map: map,
+        });
+        if (m.title) {
+          const iw = new kakao.maps.InfoWindow({ content: `<div style="padding:6px 8px">${m.title}</div>` });
+          kakao.maps.event.addListener(marker, 'click', () => iw.open(map, marker));
+        }
+      });
+    }
+
+    // SDK 로드 → 지도 초기화
+    kakao.maps.load(function () {
+      initMap({
+        lat: 37.5665, lng: 126.9780, level: 4,
+        markers: [
+          { lat: 37.5651, lng: 126.9786, title: '김사장 커피' },
+          { lat: 37.5673, lng: 126.9769, title: '동네빵집' },
+        ]
+      });
+    });
+
+    // Flutter → JS로 옵션 변경/마커 추가 등 보낼 때 사용
+    window.addEventListener('message', (e) => {
+      const msg = e.data;
+      if (msg && msg.type === 'move') {
+        const center = new kakao.maps.LatLng(msg.lat, msg.lng);
+        map && map.setCenter(center);
+      }
+      if (msg && msg.type === 'addMarkers') {
+        (msg.markers || []).forEach((m) => {
+          new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(m.lat, m.lng),
+            map: map,
+          });
+        });
+      }
+    });
+</script>
+</body>
+</html>
